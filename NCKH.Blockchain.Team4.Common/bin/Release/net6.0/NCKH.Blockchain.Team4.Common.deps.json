@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "NCKH.Blockchain.Team4.Common/1.0.0": {
+        "runtime": {
+          "NCKH.Blockchain.Team4.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NCKH.Blockchain.Team4.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -8,7 +8,7 @@ namespace NCKH.Blockchain.Team4.Common.Constant
 {
     public class DatabaseContext
     {
-        public static string ConnectionString = "Server=localhost;Port=3333;Database=nckh.blockchain.team4;Uid=root;Pwd=1234;";
+        public static string ConnectionString = "Server=sql12.freesqldatabase.com;Port=3306;Database=sql12604943;Uid=sql12604943;Pwd=3MwLRCfhE9;";
 
         public static string DASHBROAD_INFOR = "proc_dashbroad_GetInfor";
 

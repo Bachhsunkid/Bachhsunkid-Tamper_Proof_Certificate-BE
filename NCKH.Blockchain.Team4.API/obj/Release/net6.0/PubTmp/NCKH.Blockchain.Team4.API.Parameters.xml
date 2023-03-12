@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="tamperproofcert.com" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\UTC\ di\ hoc\\NCKH\\Project\\Tamper_Proof_Certificate-BE\\NCKH\.Blockchain\.Team4\.API\\obj\\Release\\net6\.0\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DIq73nwGZ+mO9+zCuk2xU7e5XHSGLXDUmGvwgFHx7+LKEA4kvZYpPNI+NHgC8JCpe9qOShmxp+P8lnNUAiei2Q==",
+  "dgSpecHash": "Kiem8yQYs+s9BTGS3D2/yG0BpeA5ndeUxeIAgGUA1NI6flNkg1VRWGGSFzdHhg0PAydZMnMIK7El2Fgi5ll5hA==",
   "success": true,
-  "projectFilePath": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj",
+  "projectFilePath": "D:\\UTC di hoc\\NCKH\\Project\\Tamper_Proof_Certificate-BE\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
