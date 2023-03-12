@@ -163,36 +163,46 @@ namespace NCKH.Blockchain.Team4.API.Controllers
         /// <param name="certificates"></param>
         /// <returns></returns>
         [HttpPost("Issued/InsertMultiple")]
-        public IActionResult InsertEmployees([FromBody] List<CertificateDTO> certificates)
+        public IActionResult CreateCert([FromBody] IEnumerable<CertificateDTO> certs)
         {
-            var connection = new MySqlConnection(DatabaseContext.ConnectionString);
-            connection.Open();
-            using (var transaction = connection.BeginTransaction())
+            try
             {
-                try
+                //Khởi tạo kết nối đến DB
+                var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
+
+                //Chuẩn bị câu lệnh sql
+                string storedProcedureName = DatabaseContext.CERTIFICATE_INSERT;
+
+                foreach (var cert in certs)
                 {
-                    foreach (var cert in certificates)
+                    var parameters = new DynamicParameters();
+
+                    //Add PolicyID cua tai khoan hien tai, hien dang fix cung
+                    parameters.Add($"@v_IssuedID", AccountContext.IssuerPolicyID);
+
+                    var props = cert.GetType().GetProperties();
+
+                    for (int i = 1; i < props.Length; i++)
                     {
-                        var parameters = new DynamicParameters();
-                        var props = cert.GetType().GetProperties();
-
-                        //Add PolicyID cua tai khoan hien tai, hien dang fix cung
-                        parameters.Add($"@v_IssuedID", AccountContext.IssuerPolicyID);
-
-                        for (int i = 1; i < props.Length; i++)
-                        {
-                            var value = props[i].GetValue(cert);
-                            parameters.Add($"@v_{props[i].Name}", value);
-                        }
+                        var value = props[i].GetValue(cert);
+                        parameters.Add($"@v_{props[i].Name}", value);
                     }
-                    transaction.Commit();
-                    return Ok("Employees inserted successfully.");
+
+                    //Thực hiện gọi vào DB
+                    int numberRowsAffected = mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+
+                    if (numberRowsAffected <= 0)
+                    {
+                        return StatusCode(StatusCodes.Status500InternalServerError);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    transaction.Rollback();
-                    return BadRequest("Error inserting employees: " + ex.Message);
-                }
+
+                return StatusCode(StatusCodes.Status201Created);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
